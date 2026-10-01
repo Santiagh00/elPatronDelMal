@@ -1,4 +1,4 @@
-﻿# ESTÁNDARES DEL EQUIPO — EL MATA PLAGAS
+# ESTÁNDARES DEL EQUIPO — EL MATA PLAGAS
 
 ## 1. Guía de estilo y nombres
 
@@ -26,42 +26,42 @@ Los nombres de variables, funciones, componentes y archivos relacionados con el 
 
 ### Reglas propias de nombres
 
-1. Los componentes de React utilizarán PascalCase.
-   Ejemplo: ProductCard.jsx.
+1. Los componentes de React utilizarán `PascalCase`.
+   Ejemplo: `ProductCard.jsx`.
 
-2. Las variables y funciones utilizarán camelCase.
-   Ejemplo: getProducts().
+2. Las variables y funciones utilizarán `camelCase`.
+   Ejemplo: `getProducts()`.
 
-3. Los nombres de archivos deberán ser claros y relacionados con su función.
-   Ejemplo: productService.js, ProductList.jsx.
+3. Los nombres de archivos deberán ser claros y estar relacionados con su función.
+   Ejemplo: `productService.js`, `ProductList.jsx`.
 
 
 ## 2. Convención de commits y ramas
 
 Los mensajes de commit utilizarán el siguiente formato:
 
-	ipo: descripción
+`tipo: descripción`
 
 ### Tipos permitidos
 
-- eat: nueva funcionalidad.
-- ix: corrección de errores.
-- docs: cambios en documentación.
-- style: cambios de estilos o formato.
-- efactor: reorganización del código sin modificar su funcionamiento.
-- 	est: creación o modificación de pruebas.
-- chore: tareas de mantenimiento.
+- `feat`: nueva funcionalidad.
+- `fix`: corrección de errores.
+- `docs`: cambios en documentación.
+- `style`: cambios de estilos o formato.
+- `refactor`: reorganización del código sin modificar su funcionamiento.
+- `test`: creación o modificación de pruebas.
+- `chore`: tareas de mantenimiento.
 
 ### Ejemplo
 
-eat: agregar catalogo de productos
+`feat: agregar catálogo de productos`
 
 ### Ramas
 
-- main: versión estable del proyecto.
-- develop: integración de los cambios del equipo.
-- eature/nombre: desarrollo de nuevas funcionalidades.
-- ix/nombre: corrección de errores.
+- `main`: versión estable del proyecto.
+- `develop`: integración de los cambios del equipo.
+- `feature/nombre`: desarrollo de nuevas funcionalidades.
+- `fix/nombre`: corrección de errores.
 
 
 ## 3. Definition of Ready
@@ -90,7 +90,7 @@ Una tarea se considerará terminada cuando:
 
 ## 5. Política de revisión
 
-Todo cambio realizado por un integrante deberá ser revisado por otro integrante antes de integrarse a la rama main.
+Todo cambio realizado por un integrante deberá ser revisado por otro integrante antes de integrarse a la rama `main`.
 
 ### Plazo de revisión
 
@@ -109,20 +109,20 @@ Un cambio no podrá ser aprobado cuando:
 
 No bloquearán la aprobación:
 
-- Sugerencias de mejoras que no sean necesarias para cumplir la tarea.
+- Sugerencias de mejora que no sean necesarias para cumplir la tarea.
 - Cambios visuales opcionales.
 - Mejoras que puedan realizarse posteriormente sin afectar la funcionalidad.
 
 ### Comentarios
 
-Los comentarios de revisión deberán ser claros, específicos y relacionados directamente con el cambio realizado.
+Los comentarios de revisión deberán ser claros, específicos y estar relacionados directamente con el cambio realizado.
 
 
 ## 6. Aceptación
 
 Los integrantes del equipo declaran:
 
-"conozco y acepto estos estándares"
+"Conozco y acepto estos estándares".
 
 - Santiago Gutiérrez Henao — conozco y acepto estos estándares.
 - Miguel Moreno Serna — conozco y acepto estos estándares.
