@@ -1,4 +1,4 @@
-# ESTÁNDARES DEL EQUIPO — EL MATA PLAGAS
+# ESTÁNDARES DEL EQUIPO — EL PATRON DEL MAL
 
 ## 1. Guía de estilo y nombres
 
