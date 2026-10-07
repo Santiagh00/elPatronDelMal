@@ -1,0 +1,250 @@
+.about-section {
+  position: relative;
+  overflow: hidden;
+  padding: 110px 0;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(230, 57, 70, 0.1), transparent 28%),
+    linear-gradient(180deg, #090909 0%, #111111 100%);
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+
+.about-container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 72px;
+}
+
+.about-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.about-image-frame {
+  position: relative;
+  width: min(100%, 470px);
+  min-height: 520px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.01)
+  );
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.about-image-glow {
+  position: absolute;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(230, 57, 70, 0.3) 0%,
+    rgba(230, 57, 70, 0.07) 45%,
+    transparent 72%
+  );
+  filter: blur(24px);
+}
+
+.about-product-image {
+  position: relative;
+  z-index: 1;
+  width: 78%;
+  max-height: 430px;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 28px 36px rgba(0, 0, 0, 0.65))
+    drop-shadow(0 0 16px rgba(230, 57, 70, 0.16));
+}
+
+.plains-pride-badge {
+  position: absolute;
+  z-index: 2;
+  right: -18px;
+  bottom: 42px;
+  display: flex;
+  flex-direction: column;
+  min-width: 170px;
+  padding: 16px 20px;
+  border: 1px solid rgba(230, 57, 70, 0.45);
+  border-radius: 14px;
+  color: #fff;
+  background: rgba(18, 18, 18, 0.92);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(12px);
+}
+
+.badge-small-text {
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.plains-pride-badge strong {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.about-kicker {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.about-content h2 {
+  margin: 0 0 24px;
+  color: var(--color-text-main);
+  font-size: clamp(2.6rem, 5vw, 4.7rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.about-lead {
+  margin: 0 0 18px;
+  color: var(--color-text-main);
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.75;
+}
+
+.about-description {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.about-card {
+  display: flex;
+  gap: 16px;
+  min-height: 205px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(230, 57, 70, 0.45);
+  background: rgba(230, 57, 70, 0.055);
+}
+
+.about-icon-wrapper {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(230, 57, 70, 0.25);
+  border-radius: 14px;
+  color: var(--color-primary);
+  background: rgba(230, 57, 70, 0.08);
+}
+
+.about-card-icon {
+  width: 23px;
+  height: 23px;
+}
+
+.about-card h3 {
+  margin: 2px 0 10px;
+  color: var(--color-text-main);
+  font-size: 1.08rem;
+}
+
+.about-card p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 960px) {
+  .about-section {
+    padding: 90px 0;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .about-content {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .about-image-frame {
+    min-height: 440px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-section {
+    padding: 72px 0;
+  }
+
+  .about-container {
+    gap: 42px;
+  }
+
+  .about-image-frame {
+    width: calc(100% - 18px);
+    min-height: 360px;
+  }
+
+  .about-product-image {
+    width: 82%;
+  }
+
+  .plains-pride-badge {
+    right: -8px;
+    bottom: 20px;
+    min-width: 145px;
+    padding: 13px 16px;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-card {
+    min-height: auto;
+  }
+}
