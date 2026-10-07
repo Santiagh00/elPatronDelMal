@@ -1,6 +1,7 @@
 import React from "react"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
+import AboutSection from "./components/AboutSection"
 import "./index.css"
 
 function App() {
@@ -8,9 +9,7 @@ function App() {
     <div>
       <Navbar />
       <Hero />
-      <div id="about" style={{ height: "100vh" }}>
-        About Section
-      </div>
+      <AboutSection />
       <div id="benefits" style={{ height: "100vh" }}>
         Benefits Section
       </div>
