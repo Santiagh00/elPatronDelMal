@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+﻿import React, { useState, useEffect } from "react"
 import "./Navbar.css"
 
 const Navbar = () => {
@@ -40,7 +40,7 @@ const Navbar = () => {
     <header className={`navbar ${isScrolled ? "scrolled" : ""}`}>
       <div className="container nav-content">
         <div className="logo">
-          <img src="/src/assets/logo.png" alt="El Patr�n del Mal Logo" className="nav-logo-img" />
+          <img src="/src/assets/logo.png" alt="El Patrón del Mal Logo" className="nav-logo-img" />
         </div>
 
         <div className="menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
@@ -60,3 +60,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+
