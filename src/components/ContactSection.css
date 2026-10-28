@@ -1,0 +1,41 @@
+.contact-section {
+  padding: 80px 20px;
+  background: #0a0a0a;
+  color: white;
+}
+
+.contact-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.contact-copy {
+  max-width: 650px;
+}
+
+.contact-copy h2 {
+  margin: 10px 0;
+  font-size: 3rem;
+}
+
+.contact-copy p {
+  line-height: 1.7;
+}
+
+.contact-kicker {
+  color: #e63946;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.contact-whatsapp-button {
+  display: inline-block;
+  padding: 15px 24px;
+  background: #e63946;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
