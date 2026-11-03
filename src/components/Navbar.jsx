@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import "./Navbar.css"
+import React, { useState, useEffect } from 'react'
+import './Navbar.css'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -7,15 +7,15 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 40) {
         setIsScrolled(true)
       } else {
         setIsScrolled(false)
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleNavLinkClick = (e, targetId) => {
@@ -30,29 +30,55 @@ const Navbar = () => {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth",
+        behavior: 'smooth'
       })
     }
     setIsMobileMenuOpen(false)
   }
 
   return (
-    <header className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+    <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-content">
-        <div className="logo">
-          <img src="/src/assets/logo.png" alt="El Patr�n del Mal Logo" className="nav-logo-img" />
+        <a href="#home" className="logo" onClick={(e) => handleNavLinkClick(e, 'home')}>
+          <img
+            src="/src/assets/logo.png"
+            alt="El Patron del Mal Logo"
+            className="nav-logo-img"
+            onError={(e) => {
+              e.target.style.display = 'none'
+            }}
+          />
+          <span className="nav-logo-text">EL PATRÓN DEL MAL</span>
+        </a>
+
+        <div
+          className="menu-toggle"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Abrir menu"
+        >
+          <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>
         </div>
 
-        <div className="menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          <i className={`fas ${isMobileMenuOpen ? "fa-times" : "fa-bars"}`}></i>
-        </div>
-
-        <nav className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
-          <a href="#home" onClick={(e) => handleNavLinkClick(e, "home")}>Home</a>
-          <a href="#about" onClick={(e) => handleNavLinkClick(e, "about")}>Our Story</a>
-          <a href="#benefits" onClick={(e) => handleNavLinkClick(e, "benefits")}>Benefits</a>
-          <a href="#prices" onClick={(e) => handleNavLinkClick(e, "prices")}>Prices</a>
-          <a href="#order" className="btn-order" onClick={(e) => handleNavLinkClick(e, "order")}>Order Now</a>
+        <nav className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
+          <a href="#home" onClick={(e) => handleNavLinkClick(e, 'home')}>
+            Inicio
+          </a>
+          <a href="#catalog" onClick={(e) => handleNavLinkClick(e, 'catalog')}>
+            Catálogo
+          </a>
+          <a href="#about" onClick={(e) => handleNavLinkClick(e, 'about')}>
+            Nuestra Historia
+          </a>
+          <a href="#benefits" onClick={(e) => handleNavLinkClick(e, 'benefits')}>
+            Beneficios
+          </a>
+          <a
+            href="#admin-catalog"
+            className="btn-admin-nav"
+            onClick={(e) => handleNavLinkClick(e, 'admin-catalog')}
+          >
+            <i className="fas fa-user-shield"></i> Administrador
+          </a>
         </nav>
       </div>
     </header>

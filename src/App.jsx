@@ -1,24 +1,25 @@
-import React from "react"
-import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import AboutSection from "./components/AboutSection"
-import "./index.css"
+import React from 'react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import AboutSection from './components/AboutSection'
+import CatalogSection from './components/CatalogSection'
+import ProductManagement from './components/ProductManagement'
+import Benefits from './components/Benefits'
+import Footer from './components/Footer'
+import './index.css'
 
 function App() {
   return (
-    <div>
+    <div className="app-root">
       <Navbar />
-      <Hero />
-      <AboutSection />
-      <div id="benefits" style={{ height: "100vh" }}>
-        Benefits Section
-      </div>
-      <div id="prices" style={{ height: "100vh" }}>
-        Prices Section
-      </div>
-      <div id="order" style={{ height: "100vh" }}>
-        Order Section
-      </div>
+      <main>
+        <Hero />
+        <AboutSection />
+        <CatalogSection />
+        <ProductManagement />
+        <Benefits />
+      </main>
+      <Footer />
     </div>
   )
 }
