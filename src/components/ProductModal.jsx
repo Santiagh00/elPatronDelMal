@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { validateProduct } from '../services/productService'
+import { validateProduct, SCENT_OPTIONS, PRESENTATION_OPTIONS } from '../services/productService'
 import './ProductModal.css'
 
 const CATEGORY_OPTIONS = [
@@ -22,7 +22,8 @@ const IMAGE_PRESETS = [
 const INITIAL_FORM_STATE = {
   name: '',
   category: 'Insecticida Concentrado',
-  presentation: '',
+  presentation: '1000ml',
+  scent: 'Lavanda Campestre',
   price: '',
   wholesalePrice: '',
   stock: '',
@@ -38,7 +39,8 @@ const ProductModal = ({ isOpen, onClose, onSave, productToEdit, existingProducts
       return {
         name: productToEdit.name || '',
         category: productToEdit.category || 'Insecticida Concentrado',
-        presentation: productToEdit.presentation || '',
+        presentation: productToEdit.presentation || '1000ml',
+        scent: productToEdit.scent || 'Lavanda Campestre',
         price: productToEdit.price !== undefined ? productToEdit.price.toString() : '',
         wholesalePrice: productToEdit.wholesalePrice !== undefined ? productToEdit.wholesalePrice.toString() : '',
         stock: productToEdit.stock !== undefined ? productToEdit.stock.toString() : '',
@@ -154,7 +156,7 @@ const ProductModal = ({ isOpen, onClose, onSave, productToEdit, existingProducts
               name="name"
               type="text"
               className={`form-input ${touched.name && errors.name ? 'is-invalid' : ''}`}
-              placeholder="Ej. El Patrón del Mal - Concentrado 1000ml"
+              placeholder="Ej. El Patrón del Mal - Concentrado 1000ml (Lavanda)"
               value={formData.name}
               onChange={handleFieldChange}
               onBlur={handleFieldBlur}
@@ -167,8 +169,8 @@ const ProductModal = ({ isOpen, onClose, onSave, productToEdit, existingProducts
             )}
           </div>
 
-          {/* Categoría y Presentación */}
-          <div className="form-grid-2">
+          {/* Categoría, Presentación y Aroma */}
+          <div className="form-grid-3">
             <div className="form-group">
               <label htmlFor="product-category">
                 Categoría <span className="required-badge">*</span>
@@ -196,21 +198,52 @@ const ProductModal = ({ isOpen, onClose, onSave, productToEdit, existingProducts
 
             <div className="form-group">
               <label htmlFor="product-presentation">
-                Presentación / Tamaño <span className="required-badge">*</span>
+                Presentación <span className="required-badge">*</span>
               </label>
               <input
                 id="product-presentation"
                 name="presentation"
+                list="presentation-list"
                 type="text"
                 className={`form-input ${touched.presentation && errors.presentation ? 'is-invalid' : ''}`}
-                placeholder="Ej. 1000ml, 500ml, 30g, 2L"
+                placeholder="1000ml, 500ml..."
                 value={formData.presentation}
                 onChange={handleFieldChange}
                 onBlur={handleFieldBlur}
               />
+              <datalist id="presentation-list">
+                {PRESENTATION_OPTIONS.map((p) => (
+                  <option key={p} value={p} />
+                ))}
+              </datalist>
               {touched.presentation && errors.presentation && (
                 <span className="form-error">
                   <i className="fas fa-exclamation-circle"></i> {errors.presentation}
+                </span>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="product-scent">
+                Aroma / Fragancia <span className="required-badge">*</span>
+              </label>
+              <select
+                id="product-scent"
+                name="scent"
+                className={`form-select ${touched.scent && errors.scent ? 'is-invalid' : ''}`}
+                value={formData.scent}
+                onChange={handleFieldChange}
+                onBlur={handleFieldBlur}
+              >
+                {SCENT_OPTIONS.map((scent) => (
+                  <option key={scent} value={scent}>
+                    {scent}
+                  </option>
+                ))}
+              </select>
+              {touched.scent && errors.scent && (
+                <span className="form-error">
+                  <i className="fas fa-exclamation-circle"></i> {errors.scent}
                 </span>
               )}
             </div>
@@ -404,10 +437,10 @@ const ProductModal = ({ isOpen, onClose, onSave, productToEdit, existingProducts
               />
               <div>
                 <p style={{ fontSize: '0.82rem', fontWeight: 600, color: '#fff' }}>
-                  Vista previa de presentación
+                  Vista previa de presentación y aroma
                 </p>
                 <p className="form-hint">
-                  {formData.name || 'Sin título aún'} &bull; {formData.presentation || 'Sin presentación'}
+                  {formData.name || 'Sin título aún'} &bull; {formData.presentation} &bull; {formData.scent}
                 </p>
               </div>
             </div>

@@ -22,6 +22,7 @@ const ProductManagement = () => {
   const [products, setProducts] = useState(() => getProducts())
   const [searchTerm, setSearchTerm] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('ALL')
+  const [scentFilter, setScentFilter] = useState('ALL')
   const [statusFilter, setStatusFilter] = useState('ALL')
   const [viewMode, setViewMode] = useState('table') // 'table' | 'cards'
 
@@ -58,10 +59,14 @@ const ProductManagement = () => {
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.targetPests.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (product.scent && product.scent.toLowerCase().includes(searchTerm.toLowerCase())) ||
         product.description.toLowerCase().includes(searchTerm.toLowerCase())
 
       const matchesCategory =
         categoryFilter === 'ALL' || product.category === categoryFilter
+
+      const matchesScent =
+        scentFilter === 'ALL' || product.scent === scentFilter
 
       const matchesStatus =
         statusFilter === 'ALL' ||
@@ -69,9 +74,9 @@ const ProductManagement = () => {
         (statusFilter === 'inactive' && product.status === 'inactive') ||
         (statusFilter === 'low-stock' && product.stock < 20)
 
-      return matchesSearch && matchesCategory && matchesStatus
+      return matchesSearch && matchesCategory && matchesScent && matchesStatus
     })
-  }, [products, searchTerm, categoryFilter, statusFilter])
+  }, [products, searchTerm, categoryFilter, scentFilter, statusFilter])
 
   // KPIs
   const totalProducts = products.length
@@ -85,6 +90,12 @@ const ProductManagement = () => {
   // Categories list for filter dropdown
   const uniqueCategories = useMemo(() => {
     const set = new Set(products.map((p) => p.category))
+    return Array.from(set)
+  }, [products])
+
+  // Scents list for filter dropdown
+  const uniqueScents = useMemo(() => {
+    const set = new Set(products.map((p) => p.scent).filter(Boolean))
     return Array.from(set)
   }, [products])
 
@@ -258,6 +269,20 @@ const ProductManagement = () => {
               ))}
             </select>
 
+            {/* Scent Filter */}
+            <select
+              className="filter-select"
+              value={scentFilter}
+              onChange={(e) => setScentFilter(e.target.value)}
+            >
+              <option value="ALL">Todos los aromas</option>
+              {uniqueScents.map((scent) => (
+                <option key={scent} value={scent}>
+                  {scent}
+                </option>
+              ))}
+            </select>
+
             {/* Status Filter */}
             <select
               className="filter-select"
@@ -344,6 +369,7 @@ const ProductManagement = () => {
                 <tr>
                   <th>Producto</th>
                   <th>Categoría</th>
+                  <th>Aroma</th>
                   <th>Plagas Objetivo</th>
                   <th>Precio Venta</th>
                   <th>Mayorista</th>
@@ -380,6 +406,26 @@ const ProductManagement = () => {
 
                       <td>
                         <span className="badge-category">{product.category}</span>
+                      </td>
+
+                      <td>
+                        <span
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            background: '#202020',
+                            border: '1px solid #333',
+                            padding: '3px 8px',
+                            borderRadius: '12px',
+                            fontSize: '0.76rem',
+                            color: '#e0e0e0',
+                            fontWeight: 600
+                          }}
+                        >
+                          <i className="fas fa-wind" style={{ color: '#e63946', fontSize: '0.7rem' }}></i>
+                          {product.scent || 'Neutro'}
+                        </span>
                       </td>
 
                       <td style={{ maxWidth: '240px' }}>
@@ -669,7 +715,12 @@ const ProductManagement = () => {
                   <p style={{ color: '#888', fontSize: '0.85rem', marginBottom: '6px' }}>
                     Código SKU: <code>{productDetail.id}</code>
                   </p>
-                  <span className="badge-category">{productDetail.category}</span>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <span className="badge-category">{productDetail.category}</span>
+                    <span className="badge-category" style={{ color: '#ff6b6b' }}>
+                      <i className="fas fa-wind"></i> {productDetail.scent}
+                    </span>
+                  </div>
                 </div>
               </div>
 

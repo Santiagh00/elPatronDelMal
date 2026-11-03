@@ -1,16 +1,33 @@
-const STORAGE_KEY = 'el_patron_products_catalog'
+const STORAGE_KEY = 'el_patron_products_catalog_v2'
+
+export const SCENT_OPTIONS = [
+  'Lavanda Campestre',
+  'Cítrico Limón',
+  'Neutro / Sin Olor',
+  'Eucalipto & Menta',
+  'Pino Silvestre'
+]
+
+export const PRESENTATION_OPTIONS = [
+  '1000ml',
+  '500ml',
+  '250ml',
+  '30g',
+  '2 Litros'
+]
 
 const INITIAL_PRODUCTS = [
   {
     id: 'prod-001',
-    name: 'El Patrón del Mal - Concentrado 1000ml',
+    name: 'El Patrón del Mal - Concentrado 1000ml (Lavanda)',
     category: 'Insecticida Concentrado',
     presentation: '1000ml',
+    scent: 'Lavanda Campestre',
     price: 12000,
     wholesalePrice: 8500,
-    stock: 48,
+    stock: 45,
     targetPests: 'Cucarachas, hormigas, arañas, alacranes, pulgas y garrapatas',
-    description: 'Fórmula ultra concentrada de choque y residualidad prolongada. Rinde hasta 20 litros de mezcla para interiores y exteriores.',
+    description: 'Fórmula ultra concentrada de choque con fragancia relajante a lavanda. Ideal para interiores de hogares, dormitorios y salas.',
     imageUrl: '/src/assets/envase.png',
     status: 'active',
     createdAt: '2026-10-01T10:00:00.000Z',
@@ -18,59 +35,127 @@ const INITIAL_PRODUCTS = [
   },
   {
     id: 'prod-002',
-    name: 'El Patrón del Mal - Concentrado 500ml',
+    name: 'El Patrón del Mal - Concentrado 1000ml (Cítrico)',
+    category: 'Insecticida Concentrado',
+    presentation: '1000ml',
+    scent: 'Cítrico Limón',
+    price: 12000,
+    wholesalePrice: 8500,
+    stock: 50,
+    targetPests: 'Cucarachas, moscas, zancudos y hormigas',
+    description: 'Poder de choque extremo con aroma cítrico revitalizante. Deja una sensación fresca en patios, garajes y bodegas.',
+    imageUrl: '/src/assets/envase.png',
+    status: 'active',
+    createdAt: '2026-10-01T11:00:00.000Z',
+    updatedAt: '2026-10-01T11:00:00.000Z'
+  },
+  {
+    id: 'prod-003',
+    name: 'El Patrón del Mal - Concentrado 1000ml (Neutro)',
+    category: 'Insecticida Concentrado',
+    presentation: '1000ml',
+    scent: 'Neutro / Sin Olor',
+    price: 12000,
+    wholesalePrice: 8500,
+    stock: 38,
+    targetPests: 'Cucarachas, chiripas, ácaros y chinches',
+    description: 'Fórmula sin perfume añadido. Diseñada especialmente para restaurantes, cocinas, despensas y personas con sensibilidad olfativa.',
+    imageUrl: '/src/assets/envase.png',
+    status: 'active',
+    createdAt: '2026-10-01T12:00:00.000Z',
+    updatedAt: '2026-10-01T12:00:00.000Z'
+  },
+  {
+    id: 'prod-004',
+    name: 'El Patrón del Mal - Concentrado 500ml (Cítrico)',
     category: 'Insecticida Concentrado',
     presentation: '500ml',
+    scent: 'Cítrico Limón',
     price: 7500,
     wholesalePrice: 6500,
-    stock: 75,
-    targetPests: 'Cucarachas, zancudos, moscas, polillas y chinches',
-    description: 'Presentación práctica y de alto rendimiento. Ideal para hogares, locales comerciales y bodegas de tamaño mediano.',
+    stock: 65,
+    targetPests: 'Cucarachas, zancudos, moscas y polillas',
+    description: 'Presentación práctica de medio litro con frescura cítrica. Rinde hasta 10 litros de mezcla protectora.',
+    imageUrl: '/src/assets/ImagenMuestra.png',
+    status: 'active',
+    createdAt: '2026-10-02T10:00:00.000Z',
+    updatedAt: '2026-10-02T10:00:00.000Z'
+  },
+  {
+    id: 'prod-005',
+    name: 'El Patrón del Mal - Concentrado 500ml (Lavanda)',
+    category: 'Insecticida Concentrado',
+    presentation: '500ml',
+    scent: 'Lavanda Campestre',
+    price: 7500,
+    wholesalePrice: 6500,
+    stock: 58,
+    targetPests: 'Cucarachas, zancudos, hormigas y arañas',
+    description: 'Presentación compacta con agradable aroma floral de lavanda campestre para protección continua del hogar.',
     imageUrl: '/src/assets/ImagenMuestra.png',
     status: 'active',
     createdAt: '2026-10-02T11:00:00.000Z',
     updatedAt: '2026-10-02T11:00:00.000Z'
   },
   {
-    id: 'prod-003',
+    id: 'prod-006',
+    name: 'El Patrón del Mal - Concentrado 500ml (Eucalipto)',
+    category: 'Insecticida Concentrado',
+    presentation: '500ml',
+    scent: 'Eucalipto & Menta',
+    price: 7500,
+    wholesalePrice: 6500,
+    stock: 42,
+    targetPests: 'Zancudos del dengue, moscas y cucarachas',
+    description: 'Efecto repelente y derribante inmediato con aroma balsámico de eucalipto natural y menta.',
+    imageUrl: '/src/assets/ImagenMuestra.png',
+    status: 'active',
+    createdAt: '2026-10-02T12:00:00.000Z',
+    updatedAt: '2026-10-02T12:00:00.000Z'
+  },
+  {
+    id: 'prod-007',
     name: 'El Patrón Gel Cebo Cucarachicida 30g',
     category: 'Cebo en Gel',
     presentation: '30g',
+    scent: 'Neutro / Sin Olor',
     price: 15000,
     wholesalePrice: 11500,
     stock: 32,
     targetPests: 'Cucaracha alemana, cucaracha americana y chiripas',
-    description: 'Atrayente alimenticio de acción en cadena con efecto dominó para nidos y grietas profundas en cocinas y despensas.',
+    description: 'Cebo alimenticio inodoro con efecto dominó. Erradica el nido completo sin emitir olores molestos.',
     imageUrl: '/src/assets/ImagenProducto.png',
     status: 'active',
     createdAt: '2026-10-03T09:30:00.000Z',
     updatedAt: '2026-10-03T09:30:00.000Z'
   },
   {
-    id: 'prod-004',
+    id: 'prod-008',
     name: 'El Patrón Polvo Seco Polivalente 250g',
     category: 'Polvo Seco',
     presentation: '250g',
+    scent: 'Pino Silvestre',
     price: 9000,
     wholesalePrice: 7200,
-    stock: 22,
+    stock: 24,
     targetPests: 'Hormigas arrieras, termitas, alacranes y grillos',
-    description: 'Polvo microencapsulado resistente a la humedad. Se aplica en zócalos, cajas eléctricas y jardines sin manchar.',
+    description: 'Polvo microencapsulado con aroma a pino de bosque. Ideal para sótanos, zócalos y zonas perimetrales.',
     imageUrl: '/src/assets/hero.png',
     status: 'active',
     createdAt: '2026-10-04T14:15:00.000Z',
     updatedAt: '2026-10-04T14:15:00.000Z'
   },
   {
-    id: 'prod-005',
+    id: 'prod-009',
     name: 'Bomba Aspersora de Presión Manual 2L',
     category: 'Accesorios y Aplicación',
     presentation: '2 Litros',
+    scent: 'Neutro / Sin Olor',
     price: 28000,
     wholesalePrice: 22000,
-    stock: 14,
+    stock: 16,
     targetPests: 'Aplicación general de insecticidas líquidos',
-    description: 'Aspersor con válvula de alta presión de bronce regulable. Permite rocío en niebla fina o chorro directo de largo alcance.',
+    description: 'Aspersor de compresión previa con boquilla de latón regulable para rocío uniforme y seguro.',
     imageUrl: '/src/assets/Trabajo2.png',
     status: 'active',
     createdAt: '2026-10-05T08:00:00.000Z',
@@ -117,6 +202,7 @@ export const createProduct = (productData) => {
     name: productData.name.trim(),
     category: productData.category.trim(),
     presentation: productData.presentation.trim(),
+    scent: productData.scent?.trim() || 'Neutro / Sin Olor',
     price: Number(productData.price),
     wholesalePrice: Number(productData.wholesalePrice),
     stock: Number(productData.stock),
@@ -147,6 +233,7 @@ export const updateProduct = (id, productData) => {
     name: productData.name.trim(),
     category: productData.category.trim(),
     presentation: productData.presentation.trim(),
+    scent: productData.scent?.trim() || existingProduct.scent || 'Neutro / Sin Olor',
     price: Number(productData.price),
     wholesalePrice: Number(productData.wholesalePrice),
     stock: Number(productData.stock),
@@ -217,6 +304,11 @@ export const validateProduct = (productData, existingProducts = [], currentId = 
   // Presentation validation
   if (!productData.presentation || !productData.presentation.trim()) {
     errors.presentation = 'La presentación es obligatoria (ej: 1000ml, 500ml).'
+  }
+
+  // Scent validation
+  if (!productData.scent || !productData.scent.trim()) {
+    errors.scent = 'El aroma o fragancia es obligatorio (ej: Lavanda Campestre, Cítrico, Neutro).'
   }
 
   // Unit Price validation
